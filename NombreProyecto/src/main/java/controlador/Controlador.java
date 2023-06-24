@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 
 import daos.AlumnoDAO;
 import daos.AlumnoDAO_REDIS;
+import daos.AlumnoDAO_SQL;
 import daos.CursoDAO;
 import daos.MateriaDAO;
 import exceptions.MateriaException;
@@ -65,6 +66,42 @@ public class Controlador {
 		}
 		return resultado;
 	}	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// cosas nuevas usando SQL!
+
+	
+	public void agregarAlumnoEnSQL(int legajo, String nombre) {
+		/* se va a agregar al alumno en un hash que tiene como 
+		 * clave su legajo y como valor su nombre.
+		 */
+		Alumno alumnito = new Alumno(legajo, nombre);
+		AlumnoDAO_SQL.getInstancia().guardar(alumnito);
+	}	
+	
+	
+	public List<AlumnoView> getAlumnosSQL(){
+		List<AlumnoView> resultado = new ArrayList<AlumnoView>();
+		List<Alumno> obtenidos = AlumnoDAO_SQL.getInstancia().obtenerAlumnosSQL();
+		for(Alumno x: obtenidos) {
+			resultado.add(x.toView());
+		}
+		return resultado;
+	}	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

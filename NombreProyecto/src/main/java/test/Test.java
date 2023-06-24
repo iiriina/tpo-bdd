@@ -83,11 +83,37 @@ public class Test {
 			Controlador.getInstancia().agregarAlumnoEnRedis(1145946, "Juana");
 			Controlador.getInstancia().agregarAlumnoEnRedis(1145947, "Miranda");
 		 */
-
+		/*
 		List<AlumnoView> listaDeAlumnosRedis = Controlador.getInstancia().getAlumnosREDIS();
 		System.out.println(listaDeAlumnosRedis);
 		
+		*/
+		
+		/* 
+		 * usando los métodos de SQL
+		 */
+		
+		/* 
+		 * agrego un par de alumnos en SQL (descomentar para cargar los datos
+		 * en la base de datos local
+		 * de la maquina de cada uno :D)
+		 * 		
+		  	Controlador.getInstancia().agregarAlumnoEnSQL(1145948, "Miguel");
+			Controlador.getInstancia().agregarAlumnoEnSQL(1145949, "Carlos");
+			Controlador.getInstancia().agregarAlumnoEnSQL(1145950, "Roberto");
+		 */
 
+		
+		
+		List<AlumnoView> listaDeAlumnosSql =Controlador.getInstancia().getAlumnosSQL();
+		System.out.println(listaDeAlumnosSql);
+
+		
+		
+		
+		
+		
+		
 	}
 }
 
