@@ -1,10 +1,13 @@
 package test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import controlador.Controlador;
+import controlador.ControllerSistema;
 import exceptions.MateriaException;
 import negocio.Alumno;
+import negocio.Producto;
 import view.AlumnoView;
 import view.CursoView;
 import view.MateriaView;
@@ -27,19 +30,18 @@ public class Test {
  * que serian Alumno Curso, etc. Siempre tiene que ver las cosas de la 
  * VISTA.  
  **/
-
-		List<AlumnoView> a = Controlador.getInstancia().getAlumnos();
-		System.out.println(a);
+//		List<AlumnoView> a = Controlador.getInstancia().getAlumnos();
+//		System.out.println(a);
 
 		
 		/* ahora lo que voy a hacer es para mostrar si encuentro un alumno con el nombre
 		 * que le paso como parametro a la funciòn. devuelve true o false.
 		 */
-		boolean variable = Controlador.getInstancia().isAlumnoPorNombre("Cacho");
-		System.out.println(variable);
+//		boolean variable = Controlador.getInstancia().isAlumnoPorNombre("Cacho");
+//		System.out.println(variable);
 		
-		boolean variable2 = Controlador.getInstancia().isAlumnoPorNombre("Marta");
-		System.out.println(variable2);
+//		boolean variable2 = Controlador.getInstancia().isAlumnoPorNombre("Marta");
+//		System.out.println(variable2);
 		
 		
 		/* empiezo a hacer testing de materias */
@@ -55,8 +57,8 @@ public class Test {
 		Controlador.getInstancia().agregarMateria("M006", "Materia VI");
 		*/
 
-		MateriaView materia = Controlador.getInstancia().buscarMateria("M002");
-		System.out.println(materia.toString());
+//		MateriaView materia = Controlador.getInstancia().buscarMateria("M002");
+//		System.out.println(materia.toString());
 		
 		/* empiezo a hacer testing de cursos sin profesores */
 
@@ -67,8 +69,8 @@ public class Test {
 		 */
 		
 		/* busco a ver si se agrego el primer curso */
-		CursoView curso = Controlador.getInstancia().buscarCurso(1);
-		System.out.println(curso.toString());
+//		CursoView curso = Controlador.getInstancia().buscarCurso(1);
+//		System.out.println(curso.toString());
 		
 		
 		/* 
@@ -83,11 +85,11 @@ public class Test {
 			Controlador.getInstancia().agregarAlumnoEnRedis(1145946, "Juana");
 			Controlador.getInstancia().agregarAlumnoEnRedis(1145947, "Miranda");
 		 */
-		/*
-		List<AlumnoView> listaDeAlumnosRedis = Controlador.getInstancia().getAlumnosREDIS();
-		System.out.println(listaDeAlumnosRedis);
 		
-		*/
+//		List<AlumnoView> listaDeAlumnosRedis = Controlador.getInstancia().getAlumnosREDIS();
+//		System.out.println(listaDeAlumnosRedis);
+		
+		
 		
 		/* 
 		 * usando los métodos de SQL
@@ -103,16 +105,24 @@ public class Test {
 			Controlador.getInstancia().agregarAlumnoEnSQL(1145950, "Roberto");
 		 */
 
+		/* Controlador.getInstancia().agregarAlumnoEnSQL(1145951, "Juan");
+		*/
 		
+//		List<AlumnoView> listaDeAlumnosSql =Controlador.getInstancia().getAlumnosSQL();
+//		System.out.println(listaDeAlumnosSql);
 		
-		List<AlumnoView> listaDeAlumnosSql =Controlador.getInstancia().getAlumnosSQL();
-		System.out.println(listaDeAlumnosSql);
+	
 
+		//vamos a probar agregando de a uno
+				
+		
+		Controlador.getInstancia().agregarProducto("55294", "Producto 6", 20390.00, 15, "foto 1 de array");
 		
 		
-		
-		
-		
+		Producto producto = Controlador.getInstancia().getProducto("55294");
+		System.out.println("Se está viendo la foto ahora?: ");
+		System.out.println(producto.getFotos());
+		System.out.println("Anda???");
 		
 	}
 }

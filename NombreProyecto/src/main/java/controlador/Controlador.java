@@ -10,10 +10,12 @@ import daos.AlumnoDAO_REDIS;
 import daos.AlumnoDAO_SQL;
 import daos.CursoDAO;
 import daos.MateriaDAO;
+import daos.ProductoDAO;
 import exceptions.MateriaException;
 import negocio.Alumno;
 import negocio.Curso;
 import negocio.Materia;
+import negocio.Producto;
 import negocio.Profesor;
 import view.AlumnoView;
 import view.CursoView;
@@ -196,6 +198,35 @@ public class Controlador {
 		return null;
 		
 	}
+	
+	
+	
+	
+	public void agregarProducto(String idProducto, String descripcion, double precio, int unidadesDisponibles, String foto) {
+	    Producto nuevoProducto = new Producto(idProducto, descripcion, precio, unidadesDisponibles);
+	    nuevoProducto.agregarFoto(foto);
+	    nuevoProducto.agregarFoto("foto 2 uwu");
+	    nuevoProducto.agregarFoto("foto 3 uwu");
+
+	    ProductoDAO.getInstancia().guardar(nuevoProducto);
+	    
+	}
+
+	
+	/* public AlumnoView recuperarAlumnoPorLegajo(int legajo){
+		
+		Alumno alumnoConEseLegajo = AlumnoDAO.getInstancia().obtenerPorId(legajo);
+		return alumnoConEseLegajo.toView();
+	}
+	*/
+	
+	public Producto getProducto(String idProducto){
+        
+		Producto productoBuscado = ProductoDAO.getInstancia().obtenerPorId(idProducto);
+		return productoBuscado;
+		
+    }
+	
 }
 
 
