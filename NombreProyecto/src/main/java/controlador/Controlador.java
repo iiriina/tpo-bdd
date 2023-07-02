@@ -202,23 +202,22 @@ public class Controlador {
 	
 	
 	
-	public void agregarProducto(String idProducto, String descripcion, double precio, int unidadesDisponibles, String foto) {
-	    Producto nuevoProducto = new Producto(idProducto, descripcion, precio, unidadesDisponibles);
-	    nuevoProducto.agregarFoto(foto);
-	    nuevoProducto.agregarFoto("foto 2 uwu");
-	    nuevoProducto.agregarFoto("foto 3 uwu");
+	
+	
+	/* La nueva aplicacion!!!! 
+	   Falta poner que devuelva ProductoView y no los productos directo de la base de datos
+	 */
+	
+	public void agregarProducto(String idProducto, String nombreProducto, String descripcion, double precio, int unidadesDisponibles, List<String> fotos, double descuento) {
+	    Producto nuevoProducto = new Producto(idProducto, nombreProducto, descripcion, precio, unidadesDisponibles, descuento);
+
+	    //hay que hacer que almacene directamente un array de fotos, de videos y de comentarios
+	    //se los tengo que pasar por parametro
+	    nuevoProducto.agregarFotos(fotos);
 
 	    ProductoDAO.getInstancia().guardar(nuevoProducto);
 	    
 	}
-
-	
-	/* public AlumnoView recuperarAlumnoPorLegajo(int legajo){
-		
-		Alumno alumnoConEseLegajo = AlumnoDAO.getInstancia().obtenerPorId(legajo);
-		return alumnoConEseLegajo.toView();
-	}
-	*/
 	
 	public Producto getProducto(String idProducto){
         
@@ -227,6 +226,148 @@ public class Controlador {
 		
     }
 	
+	
+	/* traer todos los productos desde la base de datos falta crear la clase producto View*/
+	
+	public List<Producto> getProductosCatalogo(){
+		List<Producto> obtenidos = ProductoDAO.getInstancia().obtenerProductos();
+
+		return obtenidos;
+	}
+	
+	public void eliminarProducto(String idProducto) {
+	    Producto productoAEliminar = ProductoDAO.getInstancia().obtenerPorId(idProducto);
+	    if (productoAEliminar != null) {
+	        ProductoDAO.getInstancia().eliminar(productoAEliminar);
+	    }
+	}
+	
+	//actualizar algun valor del Producto
+	
+	public void cambiarNombreProducto(String idProducto, String nombre) {
+	    Producto producto = ProductoDAO.getInstancia().obtenerPorId(idProducto);
+	    if (producto != null) {
+	    	producto.setNombreProducto(nombre);
+	        ProductoDAO.getInstancia().guardarCambioEnXCampo(producto);
+	    }
+	}
+
+	public void cambiarDescripcionProducto(String idProducto, String descripcion) {
+	    Producto producto = ProductoDAO.getInstancia().obtenerPorId(idProducto);
+	    if (producto != null) {
+	    	producto.setDescripcion(descripcion);
+	        ProductoDAO.getInstancia().guardarCambioEnXCampo(producto);
+	    }
+	}
+
+	public void cambiarPrecioProducto(String idProducto, double precio) {
+	    Producto producto = ProductoDAO.getInstancia().obtenerPorId(idProducto);
+	    if (producto != null) {
+	    	producto.setPrecio(precio);
+	        ProductoDAO.getInstancia().guardarCambioEnXCampo(producto);
+	    }
+	}
+	
+	public void cambiarUnidadesDisponiblesProducto(String idProducto, int unidadesDisponibles) {
+	    Producto producto = ProductoDAO.getInstancia().obtenerPorId(idProducto);
+	    if (producto != null) {
+	    	producto.setUnidadesDisponibles(unidadesDisponibles);
+	        ProductoDAO.getInstancia().guardarCambioEnXCampo(producto);
+	    }
+	}
+	
+	public void cambiarDescuentoProducto(String idProducto, double descuento) {
+	    Producto producto = ProductoDAO.getInstancia().obtenerPorId(idProducto);
+	    if (producto != null) {
+	    	producto.setDescuento(descuento);
+	        ProductoDAO.getInstancia().guardarCambioEnXCampo(producto);
+	    }	
+	}
+	
+	
+	//cambiar algo del array de fotos, videos y comentarios
+	
+	//fotos
+	public void agregarFotosProducto(String idProducto, List<String> fotos) {
+	    Producto producto = ProductoDAO.getInstancia().obtenerPorId(idProducto);
+	    if (producto != null) {
+	    	producto.agregarFotos(fotos);
+	        ProductoDAO.getInstancia().guardarCambioEnXCampo(producto);
+	    }	
+
+	}
+	
+	public void eliminarTodasFotosProducto(String idProducto) {
+	    Producto producto = ProductoDAO.getInstancia().obtenerPorId(idProducto);
+	    if (producto != null) {
+	    	producto.eliminarFotos();
+	        ProductoDAO.getInstancia().guardarCambioEnXCampo(producto);
+	    }	
+
+	}
+	
+	//borra las fotos que coinciden con las que me pasan en el array
+	public void borrarFotosProducto(String idProducto, List<String> fotos) {
+	    Producto producto = ProductoDAO.getInstancia().obtenerPorId(idProducto);
+	    if (producto != null) {
+	    	producto.borrarFotos(fotos);
+	        ProductoDAO.getInstancia().guardarCambioEnXCampo(producto);
+	    }	
+
+	}
+	
+	//videos
+	public void agregarVideosProducto(String idProducto, List<String> videos) {
+	    Producto producto = ProductoDAO.getInstancia().obtenerPorId(idProducto);
+	    if (producto != null) {
+	    	producto.agregarVideos(videos);
+	        ProductoDAO.getInstancia().guardarCambioEnXCampo(producto);
+	    }	
+
+	}
+	
+	public void eliminarTodosVideosProducto(String idProducto) {
+	    Producto producto = ProductoDAO.getInstancia().obtenerPorId(idProducto);
+	    if (producto != null) {
+	    	producto.eliminarVideos();;
+	        ProductoDAO.getInstancia().guardarCambioEnXCampo(producto);
+	    }	
+	}
+	
+	public void borrarVideosProducto(String idProducto, List<String> videos) {
+	    Producto producto = ProductoDAO.getInstancia().obtenerPorId(idProducto);
+	    if (producto != null) {
+	    	producto.borrarVideos(videos);
+	        ProductoDAO.getInstancia().guardarCambioEnXCampo(producto);
+	    }	
+	}
+	
+	//comentarios
+	
+	public void agregarComentariosProducto(String idProducto, List<String> comentarios) {
+	    Producto producto = ProductoDAO.getInstancia().obtenerPorId(idProducto);
+	    if (producto != null) {
+	    	producto.agregarComentarios(comentarios);
+	        ProductoDAO.getInstancia().guardarCambioEnXCampo(producto);
+	    }	
+
+	}
+	
+	public void eliminarTodosComentariosProducto(String idProducto) {
+	    Producto producto = ProductoDAO.getInstancia().obtenerPorId(idProducto);
+	    if (producto != null) {
+	    	producto.eliminarComentarios();
+	        ProductoDAO.getInstancia().guardarCambioEnXCampo(producto);
+	    }	
+	}
+	
+	public void borrarComentariosProducto(String idProducto, List<String> comentarios) {
+	    Producto producto = ProductoDAO.getInstancia().obtenerPorId(idProducto);
+	    if (producto != null) {
+	    	producto.borrarComentarios(comentarios);
+	        ProductoDAO.getInstancia().guardarCambioEnXCampo(producto);
+	    }	
+	}
 }
 
 

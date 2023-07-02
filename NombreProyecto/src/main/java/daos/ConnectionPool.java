@@ -10,7 +10,7 @@ public class ConnectionPool {
 	private EntityManagerFactory emf;
 	
 	private ConnectionPool() {
-		emf = Persistence.createEntityManagerFactory("objectdb:Inscripciones.odb");
+		emf = Persistence.createEntityManagerFactory("objectdb:MarketApp.odb");
 		
 	}
 	
