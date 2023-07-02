@@ -113,16 +113,91 @@ public class Test {
 		
 	
 
-		//vamos a probar agregando de a uno
-				
+		//vamos a probar agregando fotos con un array. 
+		List<String> fotos = new ArrayList<String>();
+		fotos.add("foto1.jpg");
+		fotos.add("foto2.jpg");
+		fotos.add("foto3.jpg");
+		//Controlador.getInstancia().agregarProducto("004", "Producto 11", "Secador de pelo con 3994 funcionalidades", 150.00, 15, fotos, 0.15);
+
+		//para ver si anda agregar una sola foto.
+		List<String> fotos2 = new ArrayList<String>();
+		fotos2.add("foto1.jpg");
+
+		//Controlador.getInstancia().agregarProducto("009", "Producto 13", "Secador de pelo con 3994 funcionalidades", 150.00, 15, fotos, 0.15);
 		
-		Controlador.getInstancia().agregarProducto("55294", "Producto 6", 20390.00, 15, "foto 1 de array");
 		
-		
-		Producto producto = Controlador.getInstancia().getProducto("55294");
+		Producto producto = Controlador.getInstancia().getProducto("009");
 		System.out.println("Se está viendo la foto ahora?: ");
 		System.out.println(producto.getFotos());
-		System.out.println("Anda???");
+		System.out.println("ver descuento:" + producto.getDescuento());
+        System.out.println("Precio con descuento: " + producto.getPrecio()*(1-producto.getDescuento()));
+        
+		List<Producto> p = Controlador.getInstancia().getProductosCatalogo();
+		
+		int n = 0;
+		for (Producto productoo : p) {
+			System.out.println(n);
+			n = n+1;
+		    double precioProducto = productoo.getPrecio();
+		    System.out.println("Precio del producto: " + precioProducto);
+		}
+		
+		System.out.println("Elementos del array Producto" + p);
+		System.out.println("Elementos del array Producto" + p);
+
+		
+		//implementar un borrar para que estén cargados bien los productos xd pero cuando
+		//sepa que funciona el log de redis.
+			
+		//Controlador.getInstancia().eliminarProducto("000");
+		
+		System.out.println("nombre del producto (antiguo): " + producto.getNombreProducto());
+		
+		Controlador.getInstancia().cambiarNombreProducto("001", "Producto 9 nuevo nombre");
+		
+		Producto productoActualizado = Controlador.getInstancia().getProducto("001");
+
+		System.out.println("nombre del producto (antiguo): " + productoActualizado.getNombreProducto());
+		
+		//funciono :D
+		
+		
+		//eliminar todas las fotos anda
+		//Controlador.getInstancia().eliminarTodasFotosProducto("006");
+		//producto = Controlador.getInstancia().getProducto("006");
+		
+		//guardar algunas fotos
+		//List<String> fotosParaAgregar = new ArrayList<String>();
+		//fotosParaAgregar.add("foto4.jpg");
+		//fotosParaAgregar.add("foto5.jpg");
+		//Controlador.getInstancia().agregarFotosProducto("009", fotosParaAgregar);
+		//producto = Controlador.getInstancia().getProducto("009");
+		
+		//eliminar algunas fotos
+		//List<String> fotosParaBorrar = new ArrayList<String>();
+		//fotosParaBorrar.add("foto4.jpg");
+		//fotosParaBorrar.add("foto5.jpg");
+		//borro todas las fotos foto 4 y foto 5 que habia, borra todas las que 
+		//sean la misma string asique si hay duplicados los borra, no borra 1 solo de ellos
+		//Controlador.getInstancia().borrarFotosProducto("009", fotosParaBorrar);
+		//producto = Controlador.getInstancia().getProducto("009");
+
+		
+		System.out.println("Nombre prd nuevo: " + producto.getNombreProducto());
+        System.out.println("Descripción prd nuevo: " + producto.getDescripcion());
+        System.out.println("Fotos: " + producto.getFotos());
+        System.out.println("Videos: " + producto.getVideos());
+        System.out.println("Comentarios: " + producto.getComentarios());
+        
+        if(producto.getDescuento() != 0) {
+            System.out.println("Precio normal: $ " + producto.getPrecio());
+            System.out.println("Precio con descuento: $ " + producto.getPrecio()*(1-producto.getDescuento()));
+        }else {
+            System.out.println("Precio: $ " + producto.getPrecio());
+        }
+        System.out.println("Unidades disponibles: " + producto.getUnidadesDisponibles());
+        System.out.println("-----------------------");
 		
 	}
 }
