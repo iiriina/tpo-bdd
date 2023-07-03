@@ -11,7 +11,7 @@ public class ConnectionPool {
 	
 	private ConnectionPool() {
 		emf = Persistence.createEntityManagerFactory("objectdb:MarketApp.odb");
-		
+
 	}
 	
 	public static ConnectionPool getInstance() {

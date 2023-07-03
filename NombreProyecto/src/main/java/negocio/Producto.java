@@ -171,4 +171,19 @@ public class Producto {
 	public void setNombreProducto(String nombreProducto) {
 		this.nombreProducto = nombreProducto;
 	}
+	
+	//obtener formato string de las fotos
+	public String getFotosFormatoString() {
+	    return String.join(", ", fotos);
+	}
+
+	
+	public String getVideosFormatoString() {
+		return String.join(", ", videos);
+	}
+	
+	public String getComentariosFormatoString() {
+		return String.join(", ", comentarios);
+	}
+
 }

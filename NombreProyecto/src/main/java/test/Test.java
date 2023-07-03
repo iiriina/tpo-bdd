@@ -2,6 +2,9 @@ package test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import com.objectdb.o.IXM.a;
 
 import controlador.Controlador;
 import controlador.ControllerSistema;
@@ -124,7 +127,7 @@ public class Test {
 		List<String> fotos2 = new ArrayList<String>();
 		fotos2.add("foto1.jpg");
 
-		//Controlador.getInstancia().agregarProducto("009", "Producto 13", "Secador de pelo con 3994 funcionalidades", 150.00, 15, fotos, 0.15);
+		//Controlador.getInstancia().agregarProducto("010", "Producto 14", "Trapo de piso", 150.00, 15, fotos2, 0.15);
 		
 		
 		Producto producto = Controlador.getInstancia().getProducto("009");
@@ -154,7 +157,7 @@ public class Test {
 		
 		System.out.println("nombre del producto (antiguo): " + producto.getNombreProducto());
 		
-		Controlador.getInstancia().cambiarNombreProducto("001", "Producto 9 nuevo nombre");
+		//Controlador.getInstancia().cambiarNombreProducto("001", "Producto 9 nuevo nombre");
 		
 		Producto productoActualizado = Controlador.getInstancia().getProducto("001");
 
@@ -199,7 +202,185 @@ public class Test {
         System.out.println("Unidades disponibles: " + producto.getUnidadesDisponibles());
         System.out.println("-----------------------");
 		
+        
+        
+        //test de redis
+        
+        //log del catalogo
+        //Controlador.getInstancia().crearEntradaLog(productoActualizado, "", "", "se ha guardado un producto");
+        //Controlador.getInstancia().crearEntradaLog(productoActualizado, "", "", "se ha guardado otro producto");
+        //Controlador.getInstancia().crearEntradaLog(productoActualizado, "", "", "se ha guardado otro producto");
+        
+        //muestro las entradas del log que hay hasta ahora
+        //Controlador.getInstancia().obtenerLog();
+        //elimino las entradas del log funcionan
+        //Controlador.getInstancia().borrarContenidoLog();
+        //Controlador.getInstancia().crearEntradaLog(productoActualizado, "", "", "se ha guardado otro producto");
+        //System.out.println("lo que hay adentro del log es esto: ");
+        //Controlador.getInstancia().obtenerLog();
+        
+        //agrego de nuevo algunas entradas al log
+        //Controlador.getInstancia().crearEntradaLog(productoActualizado, "", "", "se ha guardado un nuevo producto");
+        //Controlador.getInstancia().crearEntradaLog(productoActualizado, "", "", "se ha guardado otro nuevo producto");
+        //muestro las entradas del log nuevas
+        //Controlador.getInstancia().obtenerLog();
+        
+        
+        //funciona el agregar producto con el log
+        //Controlador.getInstancia().eliminarProducto("010"); //si le paso mal aca el string del producto me parece que va a tirar error.
+        //Controlador.getInstancia().borrarContenidoLog();
+        
+        //el log agrega las cosas de manera que se muestra arriba
+        //el ultimo agregar producto que se hizo
+        //Controlador.getInstancia().obtenerLog();
+		//Controlador.getInstancia().agregarProducto("013", "Producto 15", "Trapo de piso 3", 150.00, 15, fotos2, 0.15);
+		//Controlador.getInstancia().agregarProducto("014", "Producto 16", "Trapo de piso 4", 150.00, 15, fotos2, 0.15);
+        //Controlador.getInstancia().obtenerLog();
+        
+        //Controlador.getInstancia().borrarContenidoLog();
+		//Controlador.getInstancia().agregarProducto("038", "Producto 16", "Trapo de piso 16", 150.00, 15, fotos2, 0.15);
+		//Controlador.getInstancia().agregarProducto("039", "Producto 17", "Trapo de piso 17", 150.00, 15, fotos2, 0.15);
+		//Controlador.getInstancia().agregarProducto("040", "Producto 17", "Trapo de piso 17", 150.00, 15, fotos2, 0.15);
+		//Controlador.getInstancia().agregarProducto("041", "Producto 17", "Trapo de piso 17", 150.00, 15, fotos2, 0.15);
+		//Controlador.getInstancia().agregarProducto("042", "Producto 17", "Trapo de piso 17", 150.00, 15, fotos2, 0.15);
+
+		//Controlador.getInstancia().agregarProducto("034", "Producto 15", "Trapo de piso 3", 150.00, 15, fotos2, 0.15);
+        
+        //Controlador.getInstancia().obtenerLog();
+        //Controlador.getInstancia().borrarContenidoLog();
+        //System.out.println("Se borro el log? : ");
+        //Controlador.getInstancia().obtenerLog();
+        
+        //cambiar nombre en log
+        //Controlador.getInstancia().cambiarNombreProducto("034", "Nombre cambiado Producto 15! ! uwu");
+        //Controlador.getInstancia().obtenerLog();
+        
+        //cambiarle precio a un producto
+        //Controlador.getInstancia().cambiarPrecioProducto("034", 15.0);
+        //Controlador.getInstancia().obtenerLog();
+        
+        //cambiarle unidades disponibles a un producto
+        //Controlador.getInstancia().cambiarUnidadesDisponiblesProducto("034", 13);
+        //Controlador.getInstancia().obtenerLog();
+        
+        //cambiarle el descuento a un producto
+        //Controlador.getInstancia().cambiarDescuentoProducto("034", 0.2);
+        //Controlador.getInstancia().borrarContenidoLog();
+        //Controlador.getInstancia().cambiarNombreProducto("034", "Nombre cambiado Producto 15 uwu");
+        //Controlador.getInstancia().cambiarPrecioProducto("034", 16.0);
+        //Controlador.getInstancia().cambiarUnidadesDisponiblesProducto("034", 14);
+        //Controlador.getInstancia().cambiarDescuentoProducto("034", 0.3);
+        //Controlador.getInstancia().obtenerLog();
+        
+        //agregar fotos en un producto
+        
+		//List<String> fotosNuevas = new ArrayList<String>();
+		//fotosNuevas.add("fotoNueva4.jpg");
+		//fotosNuevas.add("fotoNueva5.jpg");
+		//fotosNuevas.add("fotoNueva6.jpg");
+		
+		//Controlador.getInstancia().agregarFotosProducto("034", fotosNuevas);
+        //Producto productoParaAgregarFotos = Controlador.getInstancia().getProducto("032");
+		//System.out.println("Se está viendo la foto ahora?: ");
+		//System.out.println(productoParaAgregarFotos.getFotos());
+		//Controlador.getInstancia().obtenerLog();
+        
+        //agregar videos en un producto 
+        
+		//List<String> videosNuevos = new ArrayList<String>();
+		//videosNuevos.add("videoNuevo1.jpg");
+		//videosNuevos.add("videoNuevo2.jpg");
+		//videosNuevos.add("videoNuevo4.jpg");
+
+		//videosNuevos.add("videoNuevo3.jpg");
+        
+        //Controlador.getInstancia().agregarVideosProducto("034", videosNuevos);
+        //Controlador.getInstancia().obtenerLog();
+        
+        //agregar comentarios en un producto
+        
+		//List<String> comentariosNuevos = new ArrayList<String>();
+		//comentariosNuevos.add("comentarioNuevo1.jpg");
+		//comentariosNuevos.add("comentarioNuevo2.jpg");
+		//comentariosNuevos.add("comentarioNuevo3.jpg");
+        
+        //Controlador.getInstancia().agregarComentariosProducto("034", comentariosNuevos);
+        //Controlador.getInstancia().obtenerLog();
+        
+        //borrar todas las fotos de un producto
+        //Controlador.getInstancia().eliminarTodasFotosProducto("034");
+        //Controlador.getInstancia().obtenerLog();
+        
+        //borrar todos los videos de un producto
+        //Controlador.getInstancia().eliminarTodosVideosProducto("034");
+        //Controlador.getInstancia().obtenerLog();
+        
+        //borrar todos los comentarios de un producto
+        //Controlador.getInstancia().eliminarTodosComentariosProducto("034");
+        //Controlador.getInstancia().obtenerLog();
+        
+        
+        //borrar algunas fotos de un producto
+        //List<String> fotosBorrarAlguna = new ArrayList<String>();
+        //fotosBorrarAlguna.add("fotoNueva5.jpg");
+
+        //Controlador.getInstancia().borrarFotosProducto("034", fotosBorrarAlguna);
+        //Controlador.getInstancia().obtenerLog();
+        
+        //borrar algunos videos de un producto
+        
+		//List<String> videosParaBorrar = new ArrayList<String>();
+		//videosParaBorrar.add("videoNuevo1.jpg");
+		//videosParaBorrar.add("videoNuevo2.jpg");
+		
+        //Controlador.getInstancia().borrarVideosProducto("034", videosParaBorrar);
+        //Controlador.getInstancia().obtenerLog();
+        
+        //borrar algunos comentarios de un producto
+		//List<String> comentariosParaBorrar = new ArrayList<String>();
+		//comentariosParaBorrar.add("comentarioNuevo1.jpg");
+		//comentariosParaBorrar.add("comentarioNuevo2.jpg");
+		
+		//Controlador.getInstancia().borrarComentariosProducto("034", comentariosParaBorrar);
+		//Controlador.getInstancia().obtenerLog();
+        
+        
+        
+        //logica del carrito
+
+        
+        //Controlador.getInstancia().agregarProductoAlCarrito("034", 2, "iruchita");
+        //Controlador.getInstancia().agregarProductoAlCarrito("033", 3, "iruchita");
+        //Controlador.getInstancia().agregarProductoAlCarrito("033", 4, "hades_jose");
+
+        //Controlador.getInstancia().mostrarCarrito("hades_jose");
+        
+        
+        //mostrar los carritos de todos los usuarios
+		//List<String> usuarios = new ArrayList<String>();
+		//usuarios.add("iruchita");
+		//usuarios.add("hades_jose");
+        //Controlador.getInstancia().mostrarTodosLosCarritos(usuarios);
+        
+        //Controlador.getInstancia().mostrarCarrito("iruchita");
+        //Controlador.getInstancia().mostrarCarrito("hades_jose");
+        
+        //a ver si funciona el borrar producto del carrito
+        //Controlador.getInstancia().eliminarProductoDelCarrito("iruchita", "033");
+        //Controlador.getInstancia().agregarProductoAlCarrito("033", 3, "iruchita");
+        //Controlador.getInstancia().mostrarCarrito("iruchita");
+        //Controlador.getInstancia().eliminarProductoDelCarrito("iruchita", "033");
+        //Controlador.getInstancia().mostrarCarrito("hades_jose");
+        
+        //modificar cantidad de un productoCarrito
+        Controlador.getInstancia().modificarCantidadProducto("iruchita", "034", 5);
+        Controlador.getInstancia().mostrarCarrito("iruchita");
+        
+        
 	}
+
+
+
 }
 
 

@@ -1,41 +1,42 @@
 package negocio;
+import java.util.List;
 
-import java.util.ArrayList;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
+@Entity
 public class Carrito {
 
-    private ArrayList<Producto> productos;
+    @Id
+    private String usuario;
 
-    //constructor
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "carrito")
+    private List<ProductoCarrito> productosCarrito;
 
-    public Carrito(){
-        productos = new ArrayList<Producto>();
+    public Carrito() {
+        // Constructor vacío requerido por JPA
     }
 
-    //setters y getters
-
-    public void setProductos(ArrayList<Producto> listaProductos){
-        this.productos = listaProductos;
+    public Carrito(String usuario, List<ProductoCarrito> productosCarrito) {
+        this.usuario = usuario;
+        this.productosCarrito = productosCarrito;
     }
 
-    public ArrayList<Producto> getProductos(){
-        return this.productos;
+    public String getUsuario() {
+        return usuario;
     }
 
-    //methods
-
-    public void agregarProducto(Producto prod){
-        this.productos.add(prod);
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
-    public void eliminarProducto(Producto prod){
-        this.productos.remove(prod);
+    public List<ProductoCarrito> getProductosCarrito() {
+        return productosCarrito;
     }
 
-    public void cambiarProducto(Producto prod1, Producto prod2){
-        this.productos.remove(prod1);
-        this.productos.add(prod2);
+    public void setProductosCarrito(List<ProductoCarrito> productosCarrito) {
+        this.productosCarrito = productosCarrito;
     }
-
-
 }
